@@ -10,6 +10,22 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 def theoretical_magnetization(T, J, k):
+    '''
+    Parameters
+    ----------
+    T : float
+        Temperature
+    J : float
+        Energy coefficient
+    k : float
+        Boltzmann Constant
+
+    Returns
+    -------
+    float
+        Theoretical magnetization
+
+    '''
     Tc = 2.269185 * J / k  
     if T > Tc:
         return 0

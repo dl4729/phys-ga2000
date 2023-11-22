@@ -75,9 +75,9 @@ def metropolis(N, spin_arr, times, l, runstr=""):
     Returns
     -------
     net_spins : float
-        DESCRIPTION.
-    net_energy : TYPE
-        DESCRIPTION.
+        Net spin (magnetization)
+    net_energy : float
+        Net energy kT/J
 
     '''
     if runstr=="":
@@ -109,13 +109,34 @@ def metropolis(N, spin_arr, times, l, runstr=""):
     return net_spins,net_energy
 
 # get the average spin, energy and energy std
-def Spin_energy(N, lattice, BJs):
-    """Get average spin, energy mean, and energy std for a range of BJ values."""
-    ms = np.zeros(len(BJs))
-    E_means = np.zeros(len(BJs))
-    E_stds = np.zeros(len(BJs))
+def Spin_energy(N, lattice, ls):
+    '''
+    
 
-    for i, bj in enumerate(BJs):
+    Parameters
+    ----------
+    N : int
+        Lattice size
+    lattice : arr
+        Spin lattice
+    ls: arr
+        List of energy constants (effectively an inverse temperature list)
+
+    Returns
+    -------
+    ms : float
+        Mean magnetizations
+    E_means : float
+        Mean energies
+    E_stds : float
+        Standard deviation of energies
+
+    '''
+    ms = np.zeros(len(ls))
+    E_means = np.zeros(len(ls))
+    E_stds = np.zeros(len(ls))
+
+    for i, bj in enumerate(ls):
         spins, energies = metropolis(N, lattice, 1000000, bj, Energy(lattice))
         ms[i] = spins[-100000:].mean() / N**2
         E_means[i] = energies[-100000:].mean()

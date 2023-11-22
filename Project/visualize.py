@@ -15,6 +15,19 @@ from ipywidgets import interact
 
 N = 200
 def display_spin_field(field):
+    '''
+    
+
+    Parameters
+    ----------
+    field : arr
+        Spin matrix
+
+    Returns
+    -------
+    None.
+
+    '''
     plt.imshow(field, cmap='gray')
     plt.colorbar()
     plt.show()

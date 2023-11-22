@@ -8,7 +8,25 @@
 import matplotlib.pyplot as plt
 
 def plot_metropolis_results(N, spins, energies,l):
-    """Plot the evolution of average spin and energy."""
+    '''
+    
+
+    Parameters
+    ----------
+    N : int
+        Lattice size
+    spins : arr
+       spin matrix
+    energies : arr
+        Energies
+    l : arr
+        Energy constants (inverse temperatures)
+
+    Returns
+    -------
+    None.
+
+    '''
     fig, axes = plt.subplots(1, 2, figsize=(12, 4))
     
     axes[0].plot(spins/N**2)
